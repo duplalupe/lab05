@@ -30,4 +30,5 @@ public abstract class Componente {
 
     public abstract int getPriority();
     public abstract char toChar();
+    public abstract String toString();
 }

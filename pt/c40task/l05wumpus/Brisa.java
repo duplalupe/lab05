@@ -11,4 +11,8 @@ public class Brisa extends Componente {
     public char toChar(){
         return Brisa.representation;
     }
+
+    public String toString(){
+        return "Brisa";
+    }
 }

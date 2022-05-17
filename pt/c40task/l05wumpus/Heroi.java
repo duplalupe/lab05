@@ -15,6 +15,10 @@ public class Heroi extends Componente {
         return Heroi.representation;
     }
 
+    public String toString(){
+        return "Heroi";
+    }
+
     public Heroi(Coordenada coord, int arrows, boolean arrowEquiped){
         this.setCoord(coord);
         this.arrows = arrows;
