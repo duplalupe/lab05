@@ -28,30 +28,35 @@ public class Montador {
 
             switch(caveStrings[i][2]){
                 case "P":
-                if (numHerois < 1) {
                     comp = new Heroi();
                     numHerois++;
-                }
                 case "B":
-                if (numBuracos < 3) {
                     comp = new Buraco(coord);
                     numBuracos++;
-                }
-                // pensando em como verificar se tem menos de 2 buracos
                 case "O":
-                if (numOuros < 1) {
                     comp = new Ouro(coord);
                     numOuros++;
-                }
                 case "W":
-                if (numWumpus < 1) {
                     comp = new Wumpus(coord);
                     numWumpus++;
-                }
                 default:
                     comp = null;
             }
 
+        }
+    }
+    public boolean verificarCaverna() {
+        if (numBuracos >= 2 && numBuracos <= 3) {
+            if (numHerois == 1) {
+                if (numOuros == 1) {
+                    if (numWumpus == 1) {
+                        return true;
+                    }
+                }
+            }
+        }
+        else {
+            return false;
         }
     }
 }
