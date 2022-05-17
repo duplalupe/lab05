@@ -46,17 +46,6 @@ public class Montador {
         }
     }
     public boolean verificarCaverna() {
-        if (numBuracos >= 2 && numBuracos <= 3) {
-            if (numHerois == 1) {
-                if (numOuros == 1) {
-                    if (numWumpus == 1) {
-                        return true;
-                    }
-                }
-            }
-        }
-        else {
-            return false;
-        }
+        return (numBuracos >= 2 && numBuracos <= 3) && (numHerois == 1) && (numOuros == 1) && (numWumpus == 1);
     }
 }
