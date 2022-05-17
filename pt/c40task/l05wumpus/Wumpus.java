@@ -12,6 +12,10 @@ public class Wumpus extends Componente {
         return Wumpus.representation;
     }
 
+    public String toString(){
+        return "Wumpus";
+    }
+
     @Override
     public void add(){
         // TODO: adicionar fedor em volta do Wumpus

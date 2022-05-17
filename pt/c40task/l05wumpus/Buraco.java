@@ -16,6 +16,10 @@ public class Buraco extends Componente {
         return Buraco.representation;
     }
 
+    public String toString(){
+        return "Buraco";
+    }
+    
     @Override
     public void add(){
         // TODO: adicionar brisa em volta do Buraco

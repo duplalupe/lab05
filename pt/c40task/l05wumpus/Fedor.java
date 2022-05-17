@@ -11,4 +11,8 @@ public class Fedor extends Componente{
     public char toChar(){
         return Fedor.representation;
     }
+
+    public String toString(){
+        return "Fedor";
+    }
 }

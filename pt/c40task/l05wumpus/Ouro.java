@@ -11,4 +11,8 @@ public class Ouro extends Componente {
     public char toChar(){
         return Ouro.representation;
     }
+
+    public String toString(){
+        return "Ouro";
+    }
 }
