@@ -26,6 +26,7 @@ public class Heroi extends Componente {
     }
 
     public void mv(Coordenada dest){
+        // verificacao do heroi indo a uma sala fora da caverna
         this.rm();
         this.setCoord(dest);
         this.add();
@@ -40,3 +41,7 @@ public class Heroi extends Componente {
         this.arrows--;
     }
 }
+
+// fazer os move up down...
+// fazer a checagem se é um buraco ou wumpus
+// fazer as printagens
