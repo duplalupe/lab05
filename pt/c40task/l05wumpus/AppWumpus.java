@@ -22,6 +22,9 @@ public class AppWumpus {
    public static void executaJogo(String arquivoCaverna, String arquivoSaida,
                                   String arquivoMovimentos) {
       Toolkit tk = Toolkit.start(arquivoCaverna, arquivoSaida, arquivoMovimentos);
+
+      // if arquivo movimentos = null --> interativo
+      // if arquivo movimentos != null --> pegar do arquivo
       
       String cave[][] = tk.retrieveCave();
       System.out.println("=== Caverna");
