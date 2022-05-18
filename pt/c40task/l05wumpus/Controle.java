@@ -24,19 +24,12 @@ public class Controle {
     }
 
     public int ajustePontuacao() {
-        score += 15;
-        if (this.heroi.captGold()) {
-            score += 1000;
-        }
+        score -= 15;
         if (this.sala.isWumpus()) {
             score -= 1000;
         }
         if (this.sala.isBuraco()) {
             score -= 1000;
-        }
-        if (this.heroi.killWumpus()) {
-            score += 500;
-            score -= 15;
         }
         return score;
     }
