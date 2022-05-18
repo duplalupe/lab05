@@ -36,6 +36,7 @@ public class Controle {
         }
         if (this.heroi.killWumpus()) {
             score += 500;
+            score -= 15;
         }
         return score;
     }
@@ -44,38 +45,34 @@ public class Controle {
         if (this.heroi.getCoord().getLin() != 1){
             Coordenada dest = new Coordenada(this.heroi.getCoord().getLin() - 1, this.heroi.getCoord().getCol());
             this.heroi.mv(dest);
+            score = ajustePontuacao();
+            return score;
         }
-        score = ajustePontuacao();
-        return score;
-        //checa o que tem na sala dest
     }
 
     public int moveDown(){
         if (this.heroi.getCoord().getLin() != 4){
             Coordenada dest = new Coordenada(this.heroi.getCoord().getLin() + 1, this.heroi.getCoord().getCol());
             this.heroi.mv(dest);
+            score = ajustePontuacao();
+            return score;
         }
-        //checa o que tem na sala dest
-        score = ajustePontuacao();
-        return score;
     }
 
     public int moveLeft(){
         if (this.heroi.getCoord().getCol() != 1){
             Coordenada dest = new Coordenada(this.heroi.getCoord().getLin(), this.heroi.getCoord().getCol() - 1);
             this.heroi.mv(dest);
+            score = ajustePontuacao();
+            return score;
         }
-        //checa o que tem na sala dest
-        score = ajustePontuacao();
-        return score;
     }
     public int moveRight(){
         if (this.heroi.getCoord().getCol() != 4){
             Coordenada dest = new Coordenada(this.heroi.getCoord().getLin(), this.heroi.getCoord().getCol() + 1);
             this.heroi.mv(dest);
+            score = ajustePontuacao();
+            return score;
         }
-        //checa o que tem na sala dest
-        score = ajustePontuacao();
-        return score;
     }
 }
