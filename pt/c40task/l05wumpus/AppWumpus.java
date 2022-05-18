@@ -1,5 +1,7 @@
 package pt.c40task.l05wumpus;
 
+import java.util.Scanner;
+
 public class AppWumpus {
 
    
@@ -22,9 +24,23 @@ public class AppWumpus {
    public static void executaJogo(String arquivoCaverna, String arquivoSaida,
                                   String arquivoMovimentos) {
       Toolkit tk = Toolkit.start(arquivoCaverna, arquivoSaida, arquivoMovimentos);
+      controle = new Controle();
 
-      // if arquivo movimentos = null --> interativo
-      // if arquivo movimentos != null --> pegar do arquivo
+      if (arquivoMovimentos == null) {
+         Scanner keyboard = new Scanner(System.in);
+         System.out.println("Nome: ");
+         String name = keyboard.nextLine();
+         controle.setName = name;
+
+         // while jogando --> command = keyboard.nextLine() e vai chamando as funções de comando
+      }
+
+      if (arquivoMovimentos != null) {
+         String movements = tk.retrieveMovements();
+         controle.setName("Alcebiades");
+
+         // while jogando --> command = keyboard.nextLine() e vai chamando as funções de comando
+      }
       
       String cave[][] = tk.retrieveCave();
       System.out.println("=== Caverna");
