@@ -75,4 +75,32 @@ public class Controle {
             return score;
         }
     }
+
+    public int comandos(char command) {
+        command = Character.toLowerCase(command);
+        if (command == 'w') {
+            moveUp();
+        }
+        else if (command == 's') {
+            moveDown();
+        }
+        else if (command = 'd') {
+            moveRight();
+        }
+        else if (command = 'a') {
+            moveLeft();
+        }
+        else if (command = 'k') {
+            heroi.equipArrow();
+        }
+        else if (command = 'c') {
+            heroi.captGold();
+        }
+        else if (command = 'q') {
+            heroi.quit();
+        }
+        else {
+            return -1; // condição de comando inválido
+        }
+    }
 }
