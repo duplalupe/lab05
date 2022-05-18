@@ -11,9 +11,9 @@ package pt.c40task.l05wumpus;
  */
 public class Sala {
     // com as regras atuais, no máximo seis componentes ocupam uma sala. Isso
-    // acontece quando uma sala cercada de 4 Buracos contém o Herói e o Ouro ou
+    // acontece quando uma sala cercada de 3 Buracos contém o Herói e o Ouro ou
     // o Wumpus.
-    private static final int default_size = 6;
+    private static final int default_size = 5;
     private Componente[] comps;
     private boolean visited;
 
