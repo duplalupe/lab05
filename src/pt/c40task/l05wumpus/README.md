@@ -56,7 +56,7 @@ public Coordenada(int lin, int col) {
 ```
 
 ## Destaque 3
-A movimentação do herói é feita por meio do polimorfismo e encapsulamento de diversas classes. A partir do uso da classe caverna, é iniciado o movimento do herói, movendo-o de sala. Dentro da classe sala existe toda lista de componentes e sua localização, ou seja, com a ligação entre herói e sala, é possível fazer o movimento e saber qual será o componente encontrado na sala de destino. Dessa forma, a ligação entre herói, sala e caverna explora o conceito da delegação de tarefas, não concentrando todo o movimento no herói.
+A movimentação do herói é feita por meio do encapsulamento de diversas classes. A partir do uso da classe caverna, é iniciado o movimento do herói, movendo-o de sala. Dentro da classe sala existe toda lista de componentes e sua localização, ou seja, com a ligação entre herói e sala, é possível fazer o movimento e saber qual será o componente encontrado na sala de destino. Dessa forma, a ligação entre herói, sala e caverna explora o conceito da delegação de tarefas, não concentrando todo o movimento no herói.
 ```java
 public void mv(Coordenada dest) {
         // verificacao do heroi indo a uma sala fora da caverna
