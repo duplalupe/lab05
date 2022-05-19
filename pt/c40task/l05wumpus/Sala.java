@@ -116,6 +116,38 @@ public class Sala {
         return current;
     }
 
+    public boolean hasOuro(){
+        return has("Ouro");
+    }
+
+    public boolean hasWumpus(){
+        return has("Wumpus");
+    }
+
+    public boolean hasBuraco(){
+        return has("Buraco");
+    }
+
+    private boolean has(String classname){
+        boolean result = false;
+        for (int i = 0; i < this.getSize(); i++){
+            if (this.comps[i].toString() == classname){
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public Wumpus getWumpus(){
+        Wumpus wumpus = null;
+        for (int i = 0; i < this.getSize(); i++){
+            if (this.comps[i].toString() == "Wumpus"){
+                wumpus = this.comps[i];
+            }
+        }
+        return wumpus;
+    }
+
     /**
      * Busca um componente na lista dos que estão presentes na sala
      * 
