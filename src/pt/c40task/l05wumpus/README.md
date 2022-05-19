@@ -104,3 +104,22 @@ public Montador(Caverna cave, String[][] caveStrings){
         this.numWumpus = 0;
     }
 ```
+
+## Destaque 6
+A fim de explorar o polimorfismo, utilizamos das funções comp.add() e comp.toString(). Tratando do comp.add(), ao adicionar um novo componente, o programa invoca o mesmo método, mesmo trdando-se de componentes diferentes. Após a chamada, ele assume diferentes comportamentos baseado no tipo de componente. Essa prática auxilia na criação de menos funções e na melhor organização do código.
+```java
+public void add() {
+        this.cave.place(this);
+    }
+
+    public void rm() {
+        this.cave.displace(this);
+    };
+```
+Ademais, como na função comp.toSring(), é chamado o método dentro da classe do componente, com  a mesma chamada para todos os componentes. Essa prática explora o polimorfismo, de modo que, ao chamar a função, todas possue, a mesma chamada, entretanto, como a aplicação da função pertence a cada classe, suas saídas são distintas. Por exemplo, ao chamar comp.toString quando com comp como Wumpus, a função retorna "Wumpus".
+```java
+ public abstract String toString();
+ public String toString(){
+        return "Wumpus";
+    }
+```
