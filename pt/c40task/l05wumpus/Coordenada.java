@@ -12,6 +12,9 @@ public class Coordenada {
         }
     }
 
+    public static boolean equals(Coordenada a, Coordenada b){
+        return a.getLin() == b.getLin() && a.getCol() == b.getCol();
+    }
     public Coordenada() {
         this(1, 1);
     }

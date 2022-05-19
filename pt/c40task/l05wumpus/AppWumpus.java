@@ -3,80 +3,78 @@ package pt.c40task.l05wumpus;
 import java.util.Scanner;
 
 public class AppWumpus {
-
-   
-   /** 
-    * @param args
-    */
-   public static void main(String[] args) {
+      public static void main(String[] args) {
       AppWumpus.executaJogo(
             (args.length > 0) ? args[0] : null,
             (args.length > 1) ? args[1] : null,
             (args.length > 2) ? args[2] : null);
    }
    
-   
-   /** 
-    * @param arquivoCaverna
-    * @param arquivoSaida
-    * @param arquivoMovimentos
-    */
    public static void executaJogo(String arquivoCaverna, String arquivoSaida,
                                   String arquivoMovimentos) {
       Toolkit tk = Toolkit.start(arquivoCaverna, arquivoSaida, arquivoMovimentos);
-      controle = new Controle();
+      Controle controle = new Controle();
+      Caverna cave = new Caverna();
 
-      if (arquivoMovimentos == null) {
-         Scanner keyboard = new Scanner(System.in);
-         System.out.println("Nome: ");
-         String name = keyboard.nextLine();
-         controle.setName = name;
+      String caveStrings[][] = tk.retrieveCave();
+      Montador mont = new Montador(cave, caveStrings);
+      mont.montarCaverna();
 
-         // while jogando --> command = keyboard.nextLine() e vai chamando as funções de comando
+      String movements = null;
+      Scanner keyboard = null;
+      String name;
+
+      if (arquivoMovimentos != null){
+         movements = tk.retrieveMovements();
+         name = "Alcebiades";
+      }
+      else {
+         keyboard = new Scanner(System.in);
+         System.out.print("Qual o seu nome? ");
+         name = keyboard.nextLine();
       }
 
-      if (arquivoMovimentos != null) {
-         String movements = tk.retrieveMovements();
-         controle.setName("Alcebiades");
 
-         // while jogando --> command = keyboard.nextLine() e vai chamando as funções de comando
-      }
-      
-      String cave[][] = tk.retrieveCave();
-      System.out.println("=== Caverna");
-      for (int l = 0; l < cave.length; l++) {
-         for (int c = 0; c < cave[l].length; c++)
-            System.out.print(cave[l][c] + ((c < cave[l].length-1) ? ", " : ""));
-         System.out.println();
-      }
-      
-      String movements = tk.retrieveMovements();
-      System.out.println("=== Movimentos");
-      System.out.println(movements);
-      
-      System.out.println("=== Caverna Intermediaria");
-      char partialCave[][] = {
-         {'#', '#', 'b', '-'},
-         {'#', 'b', '-', '-'},
-         {'b', '-', '-', '-'},
-         {'p', '-', '-', '-'}
-      };
-      int score = -120;
-      char status = 'x'; // 'w' para venceu; 'n' para perdeu; 'x' intermediárias
-      tk.writeBoard(partialCave, score, status);
+      char command; int current = 0;
+      while(controle.getStatus() == 'p'){
+         tk.writeBoard(cave.salasToChars(), controle.getScore(), 'P');         
+         printApp(cave, name, controle.getScore(), controle.getStatus());
 
-      System.out.println("=== Última Caverna");
-      char finalCave[][] = {
-         {'#', '#', 'b', '-'},
-         {'#', 'b', '#', 'f'},
-         {'b', '-', '-', 'w'},
-         {'#', '-', '-', '-'}
-      };
-      score = -1210;
-      status = 'n'; // 'w' para venceu; 'n' para perdeu; 'x' intermediárias
-      tk.writeBoard(finalCave, score, status);
-      
+         if (arquivoMovimentos == null)
+            command = keyboard.nextLine().charAt(0);
+         else
+            command = movements.charAt(current);
+            current++;
+
+         controle.setCommand(command);
+         controle.turn();
+      }
+      if (controle.getStatus() == 'w'){
+         tk.writeBoard(cave.salasToChars(), controle.getScore(), 'W');
+         printApp(cave, name, controle.getScore(), controle.getStatus());
+      }
+      else if (controle.getStatus() == 'q'){
+         tk.writeBoard(cave.salasToChars(), controle.getScore(), 'L');
+         printApp(cave, name, controle.getScore(), controle.getStatus());
+      }
+
+      else {
+         tk.writeBoard(cave.salasToChars(), controle.getScore(), 'L');
+         printApp(cave, name, controle.getScore(), controle.getStatus());
+      }   
       tk.stop();
    }
 
+   private static void printApp(Caverna cave, String name, int score, char status){
+      cave.printCave();
+      System.out.println("Player: " + name);
+      System.out.println("Score: " + score);
+
+      if (status == 'l')
+         System.out.println("Voce perdeu =(...");
+      if (status == 'q')
+         System.out.println("Volte sempre !");
+      if (status == 'w')
+         System.out.println("Voce ganhou =D !!!");
+   }
 }

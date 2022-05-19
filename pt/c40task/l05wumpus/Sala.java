@@ -27,15 +27,6 @@ public class Sala {
     }
 
     /**
-     * Retorna o número padrão de componentes que cabem em uma sala
-     * 
-     * @return int
-     */
-    public static int getDefaultSize() {
-        return default_size;
-    }
-
-    /**
      * Retorna a lista de componentes presentes em uma sala
      * 
      * @return Componente[]
@@ -138,8 +129,8 @@ public class Sala {
         return result;
     }
 
-    public Wumpus getWumpus(){
-        Wumpus wumpus = null;
+    public Componente getWumpus(){
+        Componente wumpus = null;
         for (int i = 0; i < this.getSize(); i++){
             if (this.comps[i].toString() == "Wumpus"){
                 wumpus = this.comps[i];
