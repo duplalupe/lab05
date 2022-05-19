@@ -5,7 +5,6 @@ public class Controle {
     public int score;
     public char status = 'P';
     private Heroi heroi;
-    private Sala sala;
 
     public void setName(String name) {
         this.name = name;
@@ -23,51 +22,64 @@ public class Controle {
         this.heroi = heroi;
     }
 
-    public int ajustePontuacao() {
-        score -= 15;
-        if (this.sala.isWumpus()) {
-            score -= 1000;
-        }
-        if (this.sala.isBuraco()) {
-            score -= 1000;
-        }
-        return score;
-    }
+    public void postMove() {
+        this.score -= 15;
 
-    public int moveUp(){
-        if (this.heroi.getCoord().getLin() != 1){
-            Coordenada dest = new Coordenada(this.heroi.getCoord().getLin() - 1, this.heroi.getCoord().getCol());
-            this.heroi.mv(dest);
-            score = ajustePontuacao();
-            return score;
-        }
-    }
+        // atira a flecha se ela está equipada
+        if (this.heroi.isArrowEquiped()){
+            this.heroi.shoot();
+            this.score -= 100;
 
-    public int moveDown(){
-        if (this.heroi.getCoord().getLin() != 4){
-            Coordenada dest = new Coordenada(this.heroi.getCoord().getLin() + 1, this.heroi.getCoord().getCol());
-            this.heroi.mv(dest);
-            score = ajustePontuacao();
-            return score;
+            if (!this.heroi.getSala().hasWumpus()){
+                this.score += 500;
+            }
+        }
+
+        // se entrar em uma sala com Wumpus, o jogador perde pontos e o jogo
+        if (this.heroi.getSala().hasWumpus()) {
+            this.score -= 1000;
+            this.lose();
+        }
+
+        // se entrar em uma sala com Buraco, o jogador perde pontos e o jogo
+        if (this.sala.hasBuraco()) {
+            this.score -= 1000;
+            this.lose();
         }
     }
 
-    public int moveLeft(){
-        if (this.heroi.getCoord().getCol() != 1){
-            Coordenada dest = new Coordenada(this.heroi.getCoord().getLin(), this.heroi.getCoord().getCol() - 1);
+    public void moveUp(){
+        Coordenada dest = this.heroi.getCoord().upward();
+        if (dest != null){
             this.heroi.mv(dest);
-            score = ajustePontuacao();
-            return score;
+            this.postMove();
         }
     }
-    public int moveRight(){
-        if (this.heroi.getCoord().getCol() != 4){
-            Coordenada dest = new Coordenada(this.heroi.getCoord().getLin(), this.heroi.getCoord().getCol() + 1);
+
+    public void moveDown(){
+        Coordenada dest = this.heroi.getCoord().downward();
+        if (dest){
             this.heroi.mv(dest);
-            score = ajustePontuacao();
-            return score;
+            this.postMove();
         }
     }
+
+    public void moveLeft(){
+        Coordenada dest = this.heroi.getCoord().leftward();
+        if (dest){
+            this.heroi.mv(dest);
+            this.postMove();
+        }
+    }
+    public void moveRight(){
+        Coordenada dest = this.heroi.getCoord().rightward();
+        if (dest){
+            this.heroi.mv(dest);
+            this.postMove();
+        }
+    }
+
+    public void equipArrow(){}
 
     public int comandos(char command) {
         command = Character.toLowerCase(command);

@@ -29,8 +29,10 @@ public class Caverna {
         this.salas = salas;
     }
 
-    public char[][] salasToChars(){
-        char[]
+    public Sala getSalaAt(Coordenada coord){
+        int lin = comp.getCoord().getZeroBasedLin();
+        int col = comp.getCoord().getZeroBasedCol();
+        return this.salas[lin][col];
     }
 
     public void place(Componente comp){

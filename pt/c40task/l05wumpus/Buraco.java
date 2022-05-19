@@ -3,6 +3,7 @@ package pt.c40task.l05wumpus;
 public class Buraco extends Componente {
     private static final int priority = 4;
     private static final char representation = 'B';
+    private Componente[] secondary; // polimorfismo
 
     public Buraco(Coordenada coord){
         this.setCoord(coord);
@@ -22,11 +23,20 @@ public class Buraco extends Componente {
     
     @Override
     public void add(){
-        // TODO: adicionar brisa em volta do Buraco
+        super.add();
+        Coordenada[] adjacents = this.getCoord().getAdjacent();
+        this.secondary = new Brisa[adjacents.length];
+        for (int i = 0; i < adjacents.length; i++){
+            this.secondary[i] = new Brisa(adjacents[i]);
+            this.secondary[i].add();
+        }
     }
 
     @Override
     public void rm(){
-        // TODO: remover brisa em volta do Buraco
+        super.rm();
+        for (int i = 0; i < this.secondary.length; i++){
+            this.secondary[i].rm();
+        }
     }
 }

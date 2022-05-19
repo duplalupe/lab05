@@ -20,6 +20,10 @@ public abstract class Componente {
         this.cave = cave;
     }
 
+    public Sala getSala(){
+        return this.cave.getSalaAt(this.coord);
+    }
+
     public void add() {
         this.cave.place(this);
     }

@@ -11,9 +11,9 @@ package pt.c40task.l05wumpus;
  */
 public class Sala {
     // com as regras atuais, no máximo seis componentes ocupam uma sala. Isso
-    // acontece quando uma sala cercada de 4 Buracos contém o Herói e o Ouro ou
+    // acontece quando uma sala cercada de 3 Buracos contém o Herói e o Ouro ou
     // o Wumpus.
-    private static final int default_size = 6;
+    private static final int default_size = 5;
     private Componente[] comps;
     private boolean visited;
 
@@ -114,6 +114,38 @@ public class Sala {
             }
 
         return current;
+    }
+
+    public boolean hasOuro(){
+        return has("Ouro");
+    }
+
+    public boolean hasWumpus(){
+        return has("Wumpus");
+    }
+
+    public boolean hasBuraco(){
+        return has("Buraco");
+    }
+
+    private boolean has(String classname){
+        boolean result = false;
+        for (int i = 0; i < this.getSize(); i++){
+            if (this.comps[i].toString() == classname){
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public Wumpus getWumpus(){
+        Wumpus wumpus = null;
+        for (int i = 0; i < this.getSize(); i++){
+            if (this.comps[i].toString() == "Wumpus"){
+                wumpus = this.comps[i];
+            }
+        }
+        return wumpus;
     }
 
     /**
