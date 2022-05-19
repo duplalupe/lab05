@@ -1,4 +1,4 @@
-package pt.c40task.l05wumpus;
+package src.pt.c40task.l05wumpus;
 
 public class Montador {
     private Caverna cave;
@@ -23,10 +23,10 @@ public class Montador {
         int lin;
         int col;
 
-        for (int i = 0; i < cave.getSize() * cave.getSize(); i++){
+        for (int i = 0; i < caveStrings.length; i++){
             
-            lin = Integer.parseInt(caveStrings[i][0]);
-            col = Integer.parseInt(caveStrings[i][1]);
+            lin = Integer.parseInt(caveStrings[i][0]) - 1;
+            col = Integer.parseInt(caveStrings[i][1]) - 1;
             coord = new Coordenada(lin, col);
 
             if (this.isValid())

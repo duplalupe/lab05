@@ -1,4 +1,4 @@
-package pt.c40task.l05wumpus;
+package src.pt.c40task.l05wumpus;
 
 public class Buraco extends Componente {
     private static final int priority = 4;
