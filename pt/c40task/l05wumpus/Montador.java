@@ -10,7 +10,7 @@ public class Montador {
     private int numHerois = 0;
     private int numWumpus = 0;
     
-    public Montador(String[][] caveStrings){
+    public Montador(String [][] caveStrings){
         this.caveStrings = caveStrings;
     }
 
