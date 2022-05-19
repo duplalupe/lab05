@@ -27,15 +27,6 @@ public class Sala {
     }
 
     /**
-     * Retorna o número padrão de componentes que cabem em uma sala
-     * 
-     * @return int
-     */
-    public static int getDefaultSize() {
-        return default_size;
-    }
-
-    /**
      * Retorna a lista de componentes presentes em uma sala
      * 
      * @return Componente[]
@@ -114,6 +105,38 @@ public class Sala {
             }
 
         return current;
+    }
+
+    public boolean hasOuro(){
+        return has("Ouro");
+    }
+
+    public boolean hasWumpus(){
+        return has("Wumpus");
+    }
+
+    public boolean hasBuraco(){
+        return has("Buraco");
+    }
+
+    private boolean has(String classname){
+        boolean result = false;
+        for (int i = 0; i < this.getSize(); i++){
+            if (this.comps[i].toString() == classname){
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public Componente getWumpus(){
+        Componente wumpus = null;
+        for (int i = 0; i < this.getSize(); i++){
+            if (this.comps[i].toString() == "Wumpus"){
+                wumpus = this.comps[i];
+            }
+        }
+        return wumpus;
     }
 
     /**

@@ -12,6 +12,9 @@ public class Coordenada {
         }
     }
 
+    public static boolean equals(Coordenada a, Coordenada b){
+        return a.getLin() == b.getLin() && a.getCol() == b.getCol();
+    }
     public Coordenada() {
         this(1, 1);
     }
@@ -49,6 +52,57 @@ public class Coordenada {
 
     public int getMax(){
         return this.cave.getSize();
+    }
+
+    public Coordenada[] getAdjacent(){
+        Coordenada[] adjacents = new Coordenada[this.getAmountOfAdjacent()];
+        int currentIndex = 0;        
+        if (this.leftward() != null){
+            adjacents[currentIndex] = this.leftward();
+            currentIndex++;
+        }
+        if (this.rightward() != null){
+            adjacents[currentIndex] = this.leftward();
+            currentIndex++;
+        }
+        if (this.upward() != null){
+            adjacents[currentIndex] = this.leftward();
+            currentIndex++;
+        }
+        if (this.downward() != null){
+            adjacents[currentIndex] = this.leftward();
+            currentIndex++;
+        }
+        return adjacents;
+    }
+
+    private int getAmountOfAdjacent(){
+        int adj = 0;
+        if (this.leftward() != null)
+            adj++;
+        if (this.rightward() != null)
+            adj++;
+        if (this.upward() != null)
+            adj++;
+        if (this.downward() != null)
+            adj++;
+        return adj;
+    }
+
+    public Coordenada leftward(){
+        return new Coordenada(this.getLin(), this.getCol() - 1);
+    }
+
+    public Coordenada rightward(){
+        return new Coordenada(this.getLin(), this.getCol() + 1);
+    }
+
+    public Coordenada upward(){
+        return new Coordenada(this.getLin() + 1, this.getCol());
+    }
+
+    public Coordenada downward(){
+        return new Coordenada(this.getLin() - 1, this.getCol());
     }
 
     private boolean validate() {

@@ -5,95 +5,149 @@ public class Controle {
     public int score;
     public char status = 'P';
     private Heroi heroi;
-    private Sala sala;
+    private char command;
+
+    public Controle(String name, int score, char status, Heroi heroi, char command){
+        this.name = name;
+        this.score = score;
+        this.status = status;
+        this.heroi = heroi;
+        this.command = command;
+    }
+
+    public Controle(){
+        this("", 0, 'p', null, ' ');
+    }
+
+    public void setCommand(char command){
+        this.command = Character.toLowerCase(command);
+    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void getScore(int score) {
-        this.score = score;
+    public int getScore() {
+        return this.score;
     }
 
-    public void getStatus(char status) {
-        this.status = status;
+    public char getStatus() {
+        return this.status;
     }
 
     public void setHeroi(Heroi heroi) {
         this.heroi = heroi;
     }
 
-    public int ajustePontuacao() {
-        score -= 15;
-        if (this.sala.isWumpus()) {
-            score -= 1000;
-        }
-        if (this.sala.isBuraco()) {
-            score -= 1000;
-        }
-        return score;
-    }
-
-    public int moveUp(){
-        if (this.heroi.getCoord().getLin() != 1){
-            Coordenada dest = new Coordenada(this.heroi.getCoord().getLin() - 1, this.heroi.getCoord().getCol());
+    public void moveUp(){
+        Coordenada dest = this.heroi.getCoord().upward();
+        if (dest != null){
             this.heroi.mv(dest);
-            score = ajustePontuacao();
-            return score;
+            this.postMove();
         }
     }
 
-    public int moveDown(){
-        if (this.heroi.getCoord().getLin() != 4){
-            Coordenada dest = new Coordenada(this.heroi.getCoord().getLin() + 1, this.heroi.getCoord().getCol());
+    public void moveDown(){
+        Coordenada dest = this.heroi.getCoord().downward();
+        if (dest != null){
             this.heroi.mv(dest);
-            score = ajustePontuacao();
-            return score;
+            this.postMove();
         }
     }
 
-    public int moveLeft(){
-        if (this.heroi.getCoord().getCol() != 1){
-            Coordenada dest = new Coordenada(this.heroi.getCoord().getLin(), this.heroi.getCoord().getCol() - 1);
+    public void moveLeft(){
+        Coordenada dest = this.heroi.getCoord().leftward();
+        if (dest != null){
             this.heroi.mv(dest);
-            score = ajustePontuacao();
-            return score;
+            this.postMove();
         }
     }
-    public int moveRight(){
-        if (this.heroi.getCoord().getCol() != 4){
-            Coordenada dest = new Coordenada(this.heroi.getCoord().getLin(), this.heroi.getCoord().getCol() + 1);
+    public void moveRight(){
+        Coordenada dest = this.heroi.getCoord().rightward();
+        if (dest != null){
             this.heroi.mv(dest);
-            score = ajustePontuacao();
-            return score;
+            this.postMove();
         }
     }
 
-    public int comandos(char command) {
-        command = Character.toLowerCase(command);
-        if (command == 'w') {
-            moveUp();
+    public void postMove() {
+        this.score -= 15;
+
+        // atira a flecha se ela está equipada
+        if (this.heroi.isArrowEquiped()){
+            this.heroi.shoot();
+            this.score -= 100;
+
+            if (!this.heroi.getSala().hasWumpus()){
+                this.score += 500;
+            }
         }
-        else if (command == 's') {
-            moveDown();
+
+        // se entrar em uma sala com Wumpus, o jogador perde pontos e o jogo
+        if (this.heroi.getSala().hasWumpus()) {
+            this.score -= 1000;
+            this.lose();
         }
-        else if (command = 'd') {
-            moveRight();
+
+        // se entrar em uma sala com Buraco, o jogador perde pontos e o jogo
+        if (this.heroi.getSala().hasBuraco()) {
+            this.score -= 1000;
+            this.lose();
         }
-        else if (command = 'a') {
-            moveLeft();
+    }
+
+    public void equipArrow(){
+        this.heroi.equipArrow();
+    }
+
+    public void captureGold(){
+        this.heroi.captureGold();
+    }
+
+    public void invalidCommand(){
+        System.out.println("Comando inválido!");
+    }
+
+    public void win(){
+        this.status = 'w';
+    }
+
+    public void lose(){
+        this.status = 'l';
+    }
+
+    public void quit(){
+        this.status = 'q';
+    }
+
+    public void turn() {
+        if (this.heroi.isAtExit() && this.heroi.isCarryingGold()){
+            this.win();
         }
-        else if (command = 'k') {
-            heroi.equipArrow();
-        }
-        else if (command = 'c') {
-            heroi.captGold();
-        }
-        else if (command = 'q') {
-            heroi.quit();
-        }
-        else {
-            return -1; // condição de comando inválido
+        switch(this.command){
+            case 'w':
+                this.moveUp();
+                break;
+            case 's':
+                this.moveDown();
+                break;
+            case 'd':
+                this.moveRight();
+                break;
+            case 'a':
+                this.moveLeft();
+                break;
+            case 'k':
+                this.equipArrow();
+                break;
+            case 'c':
+                this.captureGold();
+                break;
+            case 'q':
+                this.quit();
+                break;
+            default:
+                this.invalidCommand();
         }
     }
 }
