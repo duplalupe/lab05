@@ -8,13 +8,15 @@ public class TetrisBlock
     private int[][] shape;
     private Color color;
     private int x,y;
+    boolean isThere;
     
     public TetrisBlock(int[][] shape, Color color)
     {
         this.shape = shape;
         this.color = color;
-        x = 2;
+        x = 3;
         y = 2;
+        isThere = false;
     }
     
     public int[][] getShape() { return shape;}

@@ -8,7 +8,9 @@ public class GameForm extends JFrame {
     public GameForm() {
         initComponents();
         
-        this.add( new GameArea(gameAreaPlaceHolder, 15) );
+        this.add( new GameArea1(gameAreaPlaceHolder, 8) );
+        this.add( new GameArea1(gameAreaPlaceHolder1, 8) );
+        this.add( new GameArea1(gameAreaPlaceHolder2, 8) );
     }
 
     
@@ -17,37 +19,75 @@ public class GameForm extends JFrame {
     private void initComponents() {
 
         gameAreaPlaceHolder = new javax.swing.JPanel();
+        gameAreaPlaceHolder1 = new javax.swing.JPanel();
+        gameAreaPlaceHolder2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         gameAreaPlaceHolder.setBackground(new java.awt.Color(238, 238, 238));
-        gameAreaPlaceHolder.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        gameAreaPlaceHolder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout gameAreaPlaceHolderLayout = new javax.swing.GroupLayout(gameAreaPlaceHolder);
         gameAreaPlaceHolder.setLayout(gameAreaPlaceHolderLayout);
         gameAreaPlaceHolderLayout.setHorizontalGroup(
             gameAreaPlaceHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         gameAreaPlaceHolderLayout.setVerticalGroup(
             gameAreaPlaceHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 298, Short.MAX_VALUE)
+            .addGap(0, 85, Short.MAX_VALUE)
+        );
+
+        gameAreaPlaceHolder1.setBackground(new java.awt.Color(238, 238, 238));
+        gameAreaPlaceHolder1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout gameAreaPlaceHolder1Layout = new javax.swing.GroupLayout(gameAreaPlaceHolder1);
+        gameAreaPlaceHolder1.setLayout(gameAreaPlaceHolder1Layout);
+        gameAreaPlaceHolder1Layout.setHorizontalGroup(
+            gameAreaPlaceHolder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 138, Short.MAX_VALUE)
+        );
+        gameAreaPlaceHolder1Layout.setVerticalGroup(
+            gameAreaPlaceHolder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 85, Short.MAX_VALUE)
+        );
+
+        gameAreaPlaceHolder2.setBackground(new java.awt.Color(238, 238, 238));
+        gameAreaPlaceHolder2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout gameAreaPlaceHolder2Layout = new javax.swing.GroupLayout(gameAreaPlaceHolder2);
+        gameAreaPlaceHolder2.setLayout(gameAreaPlaceHolder2Layout);
+        gameAreaPlaceHolder2Layout.setHorizontalGroup(
+            gameAreaPlaceHolder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 138, Short.MAX_VALUE)
+        );
+        gameAreaPlaceHolder2Layout.setVerticalGroup(
+            gameAreaPlaceHolder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 85, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(gameAreaPlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(180, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(gameAreaPlaceHolder2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(gameAreaPlaceHolder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gameAreaPlaceHolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(180, 180, 180))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(gameAreaPlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gameAreaPlaceHolder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gameAreaPlaceHolder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -88,5 +128,7 @@ public class GameForm extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gameAreaPlaceHolder;
+    private javax.swing.JPanel gameAreaPlaceHolder1;
+    private javax.swing.JPanel gameAreaPlaceHolder2;
     // End of variables declaration//GEN-END:variables
 }
