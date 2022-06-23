@@ -1,4 +1,4 @@
-package pt.c40task.l05wumpus;
+package src.pt.c40task.l05wumpus;
 
 import java.util.Scanner;
 
@@ -19,6 +19,7 @@ public class AppWumpus {
       String caveStrings[][] = tk.retrieveCave();
       Montador mont = new Montador(cave, caveStrings);
       mont.montarCaverna();
+      //tk.writeBoard(caveStrings.salasToChars(), controle.getScore(), controle.getStatus());
 
       String movements = null;
       Scanner keyboard = null;

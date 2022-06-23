@@ -1,9 +1,9 @@
-package pt.c40task.l05wumpus;
+package src.pt.c40task.l05wumpus;
 
 public class Controle {
-    private String name;
-    private int score;
-    private char status;
+    public String name;
+    public int score;
+    public char status = 'P';
     private Heroi heroi;
     private char command;
 
