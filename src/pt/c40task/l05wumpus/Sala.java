@@ -1,4 +1,4 @@
-package pt.c40task.l05wumpus;
+package src.pt.c40task.l05wumpus;
 
 /**
  * A classe Sala guarda uma lista dos Componentes polimórficos que se encontram

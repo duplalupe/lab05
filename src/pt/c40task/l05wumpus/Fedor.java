@@ -1,4 +1,4 @@
-package pt.c40task.l05wumpus;
+package src.pt.c40task.l05wumpus;
 
 public class Fedor extends Componente{
     private static final int priority = 2;

@@ -1,4 +1,4 @@
-package pt.c40task.l05wumpus;
+package src.pt.c40task.l05wumpus;
 
 public class Caverna {
     private static final int default_size = 4;
