@@ -61,6 +61,12 @@ public class ShapeGenerator {
         int width = maxX - minX + 1;
         int heigth = maxY - minY + 1;
 
+        for (Coordinate coord : blocks) {
+            coord.x -= minX;
+            coord.y -= minY;
+        }
+
+
         return new Shape(blocks, color, width, heigth, minX, minY);
     }
 

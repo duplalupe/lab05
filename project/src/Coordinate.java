@@ -26,4 +26,12 @@ public class Coordinate extends Point {
             case LEFT: this.x -= 1; break;
         }
     }
+
+    public void setY(int val) {
+        this.y = val;
+    }
+
+    public void setX(int val) {
+        this.x = val;
+    }
 }

@@ -84,4 +84,8 @@ public class Shape {
     public ArrayList<Coordinate> getTranslatedBlocks() {
         return this.getTranslatedBlocks(this.minX, this.minY);
     }
+
+    public ArrayList<Coordinate> getShape() {
+        return blocks;
+    }
 }
