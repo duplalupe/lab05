@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "project/src",
+        "TestesSnetrix/Tetris/src/tetris"
+    ]
+}
