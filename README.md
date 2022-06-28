@@ -1,5 +1,5 @@
 # mc322
-Laboratório 5 de MC322, implementando o jogo "Mundo de Wumpus"
+Repositório de MC322 para o Lab5 - Mundo de Wumpos e Projeto Final (Project) - Jogo Snetrix
 ## Alunos
 > Luiza Coelho de Souza 247257
 > 
