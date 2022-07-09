@@ -334,7 +334,7 @@ O uso do Singleton também foi algo controverso, já que de certa maneira entend
 
 Para ideias futuras no jogo temos alguns aspectos em mente. Melhorias no sistema de pontuação seriam a primeira ideia, a qual necessitaria de uma identificação dos Shapes sem contar a ordem (já que hoje eles são detectados na cauda), ou seja, o Shape não precisaria ser formado de uma forma contínua. Para isso poder ser realizado, deveria ocorrer uma mudança na classe ShapeHunter, mudando o método como o Shape é encontrado. A implementação de combos na pontuação, perda de pontos por algo feito, e mudanças do tipo também são possíveis melhorias a serem documentadas.
 
-O possível uso de um Multiplayer também seria algo possível, podendo ser cooperativo ou competitivo, que deixaria o jogo com um aspecto interessante. 
+A implementação de um Multiplayer também seria algo possível, podendo ser cooperativo ou competitivo, que deixaria o jogo com um aspecto interessante. 
 
 Além disso, estratégias de favorecimento (como chances de spawnar Foods da cor do Shape atual ou criar Shape da cor que tiver mais Foods) também é viável, e poderia auxiliar o jogador em certos casos.
 
